@@ -1,0 +1,1087 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+@import "_mixins/emizer"
+
+::placeholder
+  color: #c8c8c8
+
+::selection
+  background-color: $lightblue
+  color: #fff
+
+body
+  font-size: 1em
+  min-width: 320px
+  position: relative
+  line-height: 1.75
+  font-family: $default-font
+  overflow-x: hidden
+  color: $text
+  input, textarea
+    // border: none
+    outline: none
+    padding: 0
+    margin: 0
+    // &:focus:required:invalid
+    //   border-color: red
+    // &:required:valid
+    //   border-color: green
+
+.img-responsive
+  display: block
+  max-width: 100%
+  height: auto
+  &.img-width
+    width: 100%
+
+b, strong
+  font-weight: bold
+
+a:hover
+    text-decoration: none
+
+ul
+  margin: 0
+  padding: 0
+  list-style: none
+
+h1, h2, h3, h4, h5, h6, p
+  padding: 0
+  margin: 0
+
+// .scroll-disabled
+//   overflow-y: hidden
+
+.scroll-enabled
+  overflow-y: scroll
+
+.this-disabled
+  display: none
+// ------------------------------
+// CUSTOM SASS
+// ------------------------------
+
+// ------- pushy OPENED -------
+.main-header__logo--pushy
+  margin-bottom: 50px
+
+.pushy a
+  display: inline-block
+
+.pushy-nav__link
+  // position: relative // Подчеркивания у пунктов меню
+  text-transform: uppercase
+  // & > .underline-decor // Подчеркивания у пунктов меню
+  //   position: absolute
+  //   bottom: 10px
+  //   left: 30px
+  //   right: 30px
+  //   display: block
+  //   height: 0
+  //   content: ""
+  //   background-color: transparent
+  //   transition: background-color 0.2s ease-in-out, height 0.2s ease-in-out
+  // & > .underline-decor
+  //     background-color: $yellow
+  //     height: 0.1875em
+
+.pushy-nav__item
+  margin-bottom: 10px
+  &:last-child
+    margin-bottom: 0
+// ------- pushy CLOSED -------
+
+.decor
+  width: 75px
+  height: 21px
+  margin: 0 auto
+  background-image: url(../img/logo-line.png)
+  background-position: center
+  background-repeat: no-repeat
+
+.underline-dashed--white
+  background: linear-gradient(to right, #ffffff, #ffffff 50%, transparent 50%)
+  background-position: 0 100%
+  background-repeat: repeat-x
+  background-size: 3px 1px
+  padding-bottom: 0.375em
+
+.underline-dashed--black
+  width: 30.5em
+  height: 0.0625em
+  padding-top: 0.6em
+  margin-bottom: 0.7em
+  background: linear-gradient(to right, #000000, #000000 50%, transparent 50%)
+  background-position: 0 100%
+  background-repeat: repeat-x
+  background-size: 3px 1px
+  +media-breakpoint-down(xs)
+    width: 100%
+
+.fa-mobile-alt
+  margin-right: 0.625em
+  font-size: 1.1em
+  color: $yellow
+
+.hamburger
+  position: fixed
+  z-index: 9999
+  top: 35px
+  right: 15px
+  padding: 0
+  margin: 0
+  vertical-align: middle
+  transition: all 0.5s ease
+
+.hamburger--disabled
+  display: none
+// ------- main-screen OPENED -------
+.main-screen
+  margin-bottom: 75px
+
+.header-bg-container
+  position: absolute
+  top: 0
+  left: 0
+  z-index: -1
+  width: 100vw
+  height: 1223px
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+
+.main-header
+  width: 100%
+  height: 90px
+  background-color: rgba(137, 137, 137, 0.4)
+  box-shadow: 0 1px 5px rgba(40, 40, 40, 0.4)
+  margin-bottom: 1.25em
+
+.main-header__logo
+  padding-top: 23px
+
+.main-header__nav
+  li
+    display: inline-block
+    margin-right: 2.6875em
+    line-height: 90px
+    &:last-child
+       margin-right: 0
+    a
+      position: relative
+      padding-bottom: 0.5em
+      color: #ffffff
+      border-bottom: 0 solid transparent
+      & > .underline-decor
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        display: block
+        height: 0
+        content: ""
+        background-color: transparent
+        transition: background-color 0.2s ease-in-out, height 0.2s ease-in-out
+      &:hover > .underline-decor
+          background-color: $yellow
+          height: 0.1875em
+
+.main-header__tel-wrap
+  padding-top: 0.9166em
+  text-align: right
+  +media-breakpoint-down(md)
+    padding-right: 5em
+  p
+    font-size: 0.75em
+    color: #ffffff
+    margin: 0
+    padding: 0
+
+.main-header__tel
+  a
+    color: #ffffff
+    font-size: 1.5em
+
+.main-header__tel-wrap--lower
+  padding: 0
+
+.main-offer
+  h1
+    font-family: $header-font
+    font-size: em(75px)
+    color: $lightblue
+    +media-breakpoint-down(lg)
+      font-size: em(60px)
+    +media-breakpoint-down(sm)
+      text-align: center
+
+.main-offer-wrap
+  position: relative
+
+.main-items
+  ul
+    display: inline-block
+    line-height: 2.25
+    i
+      margin-right: 0.625em
+      color: $yellow
+      font-size: 0.8125em
+
+  +media-breakpoint-down(sm)
+    width: 313px
+    margin: 0 auto
+  +media-breakpoint-down(xs)
+    width: 285px
+
+.main-items i.fa-check--purple
+  color: #009ee3
+
+.main-items-inner-left
+  position: relative
+  padding-right: 1.875em
+  margin-right: 1.875em
+  +media-breakpoint-down(xs)
+    padding-right: 1em
+    margin-right: 1em
+  &:after
+    content: ""
+    position: absolute
+    top: 10px
+    right: 0px
+    bottom: 10px
+    border-left: 1px solid #b2b2b2
+
+.main-mockup
+  position: absolute
+  top: -15px
+  left: 400px
+  +media-breakpoint-down(lg)
+    left: 340px
+
+.main-desc
+  padding-top: em(25px)
+
+.main-quest
+  margin-bottom: 1em
+  font-size: 24px
+  color: #080eaa
+  +media-breakpoint-down(sm)
+    line-height: 1.3
+
+.main-btn-wrap
+  +media-breakpoint-down(sm)
+    text-align: center
+
+.call-btn
+  position: relative
+  overflow: hidden
+  width: 14.375em
+  height: 3.4375em
+  margin-right: 1.875em
+  color: #ffffff
+  background: linear-gradient(to right, #2c2f84 0%, #4d53eb 100%)
+  border: none
+  border-radius: 10px
+  cursor: pointer
+  transition: 0.4s ease
+  user-select: none
+  +media-breakpoint-down(sm)
+    display: block
+    margin-right: 0
+    float: left
+  +media-breakpoint-down(xs)
+    float: none
+    margin: 0 auto 15px
+    width: 100%
+    font-size: em(18px)
+
+.email-btn
+  position: relative
+  overflow: hidden
+  width: 15.5em
+  height: 3.4375em
+  color: #ffffff
+  background: linear-gradient(to right, #2c2f84 0%, #4d53eb 100%)
+  border: none
+  border-radius: 10px
+  cursor: pointer
+  transition: 0.4s ease
+  user-select: none
+  +media-breakpoint-down(sm)
+    display: block
+    float: right
+  +media-breakpoint-down(xs)
+    float: none
+    margin: 0 auto
+    width: 100%
+    font-size: 1.125em
+// ------- main-screen CLOSED -------
+
+// ------- section-1 OPENED -------
+.section-1
+  margin-bottom: 55px
+  padding-top: 45px
+  h2
+    font-size: em(56px)
+    font-weight: 400
+    font-family: $default-font
+    text-align: center
+    color: $lightblue
+    text-transform: uppercase
+    +media-breakpoint-down(sm)
+      font-size: 2.75em
+
+.section-1__underline
+  width: em(374px)
+  height: 0.0625em
+  padding-top: 0.6em
+  margin: -1.375em auto 4.375em
+  background: linear-gradient(to right, #000000, #000000 50%, transparent 50%)
+  background-position: 0 100%
+  background-repeat: repeat-x
+  background-size: 3px 1px
+  +media-breakpoint-down(sm)
+    width: 100%
+
+.cards-row--2
+  padding-top: 30px
+
+// cards OPENED
+.cards
+  width: 100%
+  display: flex
+  display: -webkit-flex
+  justify-content: center
+  -webkit-justify-content: center
+  max-width: 820px
+
+@for $i from 1 through 8
+  .card--#{$i} .card__img, .card--#{$i} .card__img--hover 
+    background-image: url('../img/@2x/services/preview/service-#{$i}@2x--prew.jpg')
+    background-image: image-set( url('../img/@1x/services/preview/service-#{$i}@1x--prew.jpg') 1x, url('../img/@2x/services/preview/service-#{$i}@2x--prew.jpg') 2x)
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+.card__like
+  width: 18px
+
+.card__clock
+  width: 15px
+  vertical-align: middle
+  fill: #AD7D52
+
+.card__time
+  font-size: 12px
+  color: #AD7D52
+  vertical-align: middle
+  margin-left: 5px
+
+.card__clock-info 
+  float: right
+
+.card__img
+  visibility: hidden
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  width: 100%
+  height: 235px
+  border-top-left-radius: 12px
+  border-top-right-radius: 12px
+
+.card__info-hover
+  position: absolute
+  padding: 16px
+  width: 100%
+  opacity: 0
+  top: 0
+
+.card__img--hover
+  transition: 0.2s all ease-out
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  width: 100%
+  position: absolute
+  height: 235px
+  border-top-left-radius: 12px
+  border-top-right-radius: 12px
+  top: 0
+
+.card
+  position: relative
+  width: 100%
+  height: 440px
+  overflow: hidden
+  margin-bottom: 35px
+  background-color: #fff
+  border-radius: 12px
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1)
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1)
+  +media-breakpoint-up(lg)
+    &:hover
+      box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1)
+      transform: scale(1.10, 1.10)
+  +media-breakpoint-down(lg)
+    height: 470px
+
+.card__info
+  background-color: #fff
+  border-bottom-left-radius: 12px
+  border-bottom-right-radius: 12px
+  padding: 16px 24px 24px 24px
+
+.card__category
+  font-family: $default-font
+  text-transform: uppercase
+  font-size: 1em
+  color: #929292
+
+.card__title
+  margin-top: 5px
+  margin-bottom: 60px
+  font-family: $default-font
+  line-height: 1.25em
+
+.card__title--double-row
+  margin-bottom: 37px
+
+.card__title--triple-row
+  margin-bottom: 13px
+
+.card__price-container
+  text-align: right
+  line-height: 1
+
+.card__price
+  font-size: 1em
+  font-family: $default-font
+
+.card__sum
+  font-family: $default-font
+  font-size: 2.25em
+
+.card__author
+  font-weight: 600
+  text-decoration: none
+  color: #AD7D52
+
+.owl-carousel--1 .owl-nav.disabled + .owl-dots
+  margin-top: -20px
+
+.owl-carousel--2 .owl-nav.disabled + .owl-dots
+  margin-top: -15px
+
+// +media-breakpoint-up(lg) // Анимация фона
+//   .card:hover .card__img--hover
+//     height: 100%
+//     opacity: 0.2
+
++media-breakpoint-up(lg)
+  .card:hover .card__info
+    background-color: transparent
+    position: relative
+
++media-breakpoint-up(lg)
+.card:hover .card__info-hover
+  opacity: 1
+// cards CLOSED
+// ------- section-1 CLOSED -------
+
+// ------- section-2 OPENED -------
+.section-2
+  margin-bottom: 40px
+  padding-top: 55px
+  h2
+    font-size: em(56px)
+    font-weight: 400
+    font-family: $default-font
+    text-align: center
+    color: $lightblue
+    text-transform: uppercase
+    +media-breakpoint-down(sm)
+      font-size: 2.75em
+      line-height: 1.2
+
+.section-2__underline
+  width: em(630px)
+  height: 0.0625em
+  padding-top: 0.6em
+  margin: -1.375em auto 4.375em
+  background: linear-gradient(to right, #000000, #000000 50%, transparent 50%)
+  background-position: 0 100%
+  background-repeat: repeat-x
+  background-size: 3px 1px
+  +media-breakpoint-down(sm)
+    width: 100%
+    padding-top: 1.4em
+
+.section-2-card
+  position: relative
+  width: 100%
+  height: 263px
+  margin-bottom: 35px
+  overflow: hidden
+  border-radius: 12px
+  box-shadow: 5px 8.7px 15px rgba(0, 0, 0, 0.2)
+  cursor: pointer
+
+@for $i from 1 through 11
+  .section-2-card--#{$i}
+    display: block
+    width: 100%
+    height: 100%
+    border-radius: 12px
+    background-color: #c5c5c5
+    background-image: url('../img/@2x/examples/preview/example-#{$i}@2x--prew.jpg')
+    background-image: image-set( url('../img/@1x/examples/preview/example-#{$i}@1x--prew.jpg') 1x, url('../img/@2x/examples/preview/example-#{$i}@2x--prew.jpg') 2x)
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    transition: all 0.5s
+    &::before
+      position: absolute
+      top: 0
+      left: 0
+      display: none
+      height: 100%
+      width: 100%
+      content: ""
+      background-color: rgba(0, 0, 0, 0.5)
+    span
+      position: absolute
+      display: none
+      font-family: sans-serif
+      color: white
+      text-align: center
+      font-weight: bold
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+@for $i from 1 through 11
+  .section-2-card:hover .section-2-card--#{$i},
+  .section-2-card:focus .section-2-card--#{$i}
+    +media-breakpoint-up(lg)
+      transform: scale(1.1)
+  .section-2-card:hover .section-2-card--#{$i}:before,
+  .section-2-card:focus .section-2-card--#{$i}:before
+    +media-breakpoint-up(lg)
+      display: block
+
+.section-2-card:hover span,
+.section-2-card:focus span
+  +media-breakpoint-up(lg)
+    display: block
+
+.section-2-cards--row-1 .section-2-card,
+.section-2-cards--row-2 .section-2-card
+  margin-bottom: 30px
+
+.section-2-cards--row-2, .section-2-cards--row-3
+  +media-breakpoint-down(md)
+    padding-top: 25px
+
+.section-2-cards--row-1
+  position: relative
+
+.nav-left
+  position: absolute
+  top: 112px
+  left: 40px
+  z-index: 1
+  width: 3em
+  height: 3em
+  border: none
+  border-radius: 50%
+  background:  rgba(0, 0, 0, 0.5)
+  cursor: pointer
+  +media-breakpoint-down(md)
+    display: none
+
+.nav-right
+  position: absolute
+  top: 112px
+  right: 40px
+  z-index: 1
+  width: 3em
+  height: 3em
+  border: none
+  border-radius: 50%
+  background:  rgba(0, 0, 0, 0.5)
+  cursor: pointer
+  +media-breakpoint-down(md)
+    display: none
+
+.nav-left .fa,
+.nav-right .fa
+  font-size: 1.5em
+  color: #ffffff
+
+.nav-left .fa-angle-left,
+  position: absolute
+  top: 50%
+  left: 48%
+  transform: translate(-48%, -50%)
+
+.nav-right .fa-angle-right
+  position: absolute
+  top: 50%
+  left: 52%
+  transform: translate(-52%, -50%)
+
+.owl-theme .owl-dots
+  margin-top: -25px
+  +media-breakpoint-up(lg)
+    margin-bottom: 15px
+// ------- section-2 CLOSED -------
+
+// ------- footer OPENED -------
+.decor--3
+  margin-bottom: 75px
+
+.main-footer
+  position: relative
+  height: 120px
+  background-color: #282828
+  +media-breakpoint-down(lg)
+    height: 100%
+
+.main-footer__logo-container,
+.main-footer__circle-container,
+.main-footer__tel-container
+  height: 120px
+  +media-breakpoint-down(sm)
+    height: 80px
+
+.main-footer__logo,
+  position: absolute
+  top: 50%
+  transform: translate(0, -50%)
+
+.social-container
+  width: 100%
+  height: 100%
+  line-height: 120px
+  text-align: center
+
+.social-elem
+  position: relative
+  display: inline-block
+  width: 60px
+  height: 55px
+  margin-right: 20px
+  line-height: normal
+  vertical-align: middle
+  &:last-child
+    margin: 0
+  +media-breakpoint-down(sm)
+    // margin: 0 Если элементов больше 4
+    margin: 5px
+
+.social-elem__circle
+  position: absolute
+  top: 0
+  left: 50%
+  width: 35px
+  height: 35px
+  background-color: #ffffff
+  border-radius: 50%
+  transform: translate(-50%, 0)
+  transition: 0.5s ease
+  cursor: pointer
+  &:hover + span > .underline-decor
+    height: 0.1875em
+    background-color: $yellow
+
+.social-elem__icon
+  position: absolute
+  top: 50%
+  left: 50%
+  font-size: em(18px)
+  color: #282828
+  transform: translate(-50%, -50%)
+
+.social-elem__title
+  position: absolute
+  bottom: 0
+  left: 50%
+  font-size: em(12px)
+  color: #ffffff
+  transform: translate(-50%, 0)
+  cursor: pointer
+  +media-breakpoint-up(sm)
+    & > .underline-decor
+      position: absolute
+      bottom: em(-5px)
+      left: 0
+      right: 0
+      display: block
+      height: 0
+      content: ""
+      background-color: transparent
+      transition: background-color 0.2s ease-in-out, height 0.2s ease-in-out
+    &:hover .underline-decor
+      height: 0.1875em
+      background-color: $yellow
+
+.main-footer__tel-container
+  position: relative
+  text-align: right
+  p
+    font-size: 0.75em
+    color: #ffffff
+    margin: 0
+    padding: 0
+
+.main-footer__tel-container-inner
+  position: absolute
+  top: 50%
+  right: 0
+  transform: translate(0, -50%)
+
+.main-footer__tel
+  a
+    color: #ffffff
+    font-size: 1.5em
+    +media-breakpoint-down(sm)
+      font-size: 1em
+// ------- footer CLOSED -------
+
+// ------- scroll-top OPENED -------
+.scroll-top
+  position: fixed
+  right: 15px
+  bottom: 15px
+  visibility: hidden
+  z-index: 2
+  width: 40px
+  height: 40px
+  background-color: $lightblue
+  border-radius: 50%
+  box-shadow: 0 1px 5px rgba(40, 40, 40, 0.4)
+  opacity: 0
+  transition: all 0.5s ease
+  cursor: pointer
+  transform: translateX(120px)
+  will-change: transform
+  &:hover
+    +media-breakpoint-up(sm)
+      opacity: 0.6
+  i
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 20px
+    color: #ffffff
+
+.scroll-top--active
+  visibility: visible
+  opacity: 0.8
+  transform: translateX(0)
+
+.scroll-top--bottom-position
+  +media-breakpoint-down(sm)
+    transform: translateY(-200px)
+// ------- scroll-top CLOSED -------
+
+// ------- Magnific-Popup OPENED -------
+.white-popup 
+  position: relative
+  max-width: 640px
+  margin: 0 auto
+  padding: 25px
+  border-radius: 12px
+  background: #ffffff
+  & img
+    max-width: 100%
+  h2
+    // font-weight: normal
+
+/* Зум */
+.mfp-zoom-in .mfp-with-anim
+  opacity: 0
+  transition: all 0.2s ease-in-out
+  transform: scale(0.8)
+
+.mfp-zoom-in.mfp-bg
+  opacity: 0
+  transition: all 0.3s ease-out
+
+.mfp-zoom-in.mfp-ready .mfp-with-anim
+  opacity: 1
+  transform: scale(1)
+
+.mfp-zoom-in.mfp-ready.mfp-bg
+  opacity: 0.8
+
+.mfp-zoom-in.mfp-removing .mfp-with-anim
+  transform: scale(0.8)
+  opacity: 0
+
+.mfp-zoom-in.mfp-removing.mfp-bg
+  opacity: 0
+
+// Forms
+.feedback-popup
+  padding: 60px 100px 60px 100px
+  max-width: 860px
+  +media-breakpoint-down(md)
+    padding: 60px 70px 60px 70px
+  +media-breakpoint-down(xs)
+    padding: 60px 20px 20px 20px
+
+.feedback-popup--call
+  padding: 60px 100px 60px 100px
+  max-width: 540px
+  +media-breakpoint-down(md)
+    padding: 60px 70px 60px 70px
+  +media-breakpoint-down(xs)
+    padding: 60px 20px 20px 20px
+
+.feedback-popup__title
+  font-size: em(20px)
+  margin-top: em(20px)
+  margin-bottom: em(15px)
+  font-weight: bold
+  color: $text
+  line-height: em(20px)
+  text-align: center
+
+.feedback-popup__title--blue
+  color: #009fe3
+
+.feedback-popup__title--call
+  margin-bottom: em(40px)
+
+.feedback-popup__subtitle
+  margin-bottom: em(60px)
+  font-size: em(12px)
+  font-weight: normal
+  color: #c0c0c0
+  line-height: em(20px)
+  text-align: center
+
+.email-send-button,
+.call-send-button
+  position: relative
+  overflow: hidden
+  width: 100%
+  height: 3.4375em
+  margin-top: em(6px)
+  margin-right: 1.875em
+  color: #ffffff
+  font-size: em(18px)
+  background: linear-gradient(to right, #2c2f84 0%, #4d53eb 100%)
+  border: none
+  border-radius: 10px
+  cursor: pointer
+  transition: 0.4s ease
+  user-select: none
+  +media-breakpoint-down(sm)
+    margin-right: 0
+
+
+// Google Material Design in CSS3
+
+/* form starting stylings ------------------------------- */
+.feedback-popup__content
+  position: relative
+
+.form__elem
+  position: relative
+  margin-bottom: 45px
+
+.form__elem--message
+  position: absolute
+  top: 0
+  right: 0
+  +media-breakpoint-down(md)
+    position: relative
+
+input, textarea
+  font-size: em(16px)
+  padding: 10px 10px 10px 5px
+  display: block
+  width: 300px
+  border: none
+  border-bottom: 1px solid #c8c8c8
+  +media-breakpoint-down(md)
+    width: 100%
+
+.feedback-popup--call input, textarea
+  width: 100%
+
+textarea
+  height: 177px
+  resize: none
+
+input:focus
+  outline: none
+
+/* LABEL ======================================= */
+label
+  color: #999
+  font-size: em(16px)
+  font-weight: normal
+  position: absolute
+  pointer-events: none
+  top: 0
+  left: 5px
+  transition: all 0.2s ease
+  +media-breakpoint-down(sm)
+    font-size: em(20px)
+
+/* active state */
+input:focus ~ label, input:valid ~ label,
+textarea:focus ~ label, textarea:valid ~ label
+  top: -20px
+  font-size: em(12px)
+  color: #009fe3
+  +media-breakpoint-down(sm)
+    font-size: em(16px)
+
+/* BOTTOM BARS ================================= */
+.bar
+  position: relative
+  display: block
+  width: 300px
+  +media-breakpoint-down(md)
+    width: 100%
+
+.feedback-popup--call .bar
+  width: 100%
+
+.bar:before,
+.bar:after
+  content: ''
+  height: 2px
+  width: 0
+  bottom: 0
+  position: absolute
+  background: #009fe3
+  transition: all 0.2s ease
+
+.bar:before
+  left: 50%
+
+.bar:after
+  right: 50%
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after,
+textarea:focus ~ .bar:before, textarea:focus ~ .bar:after
+  width: 50%
+
+/* HIGHLIGHTER ================================== */
+.highlight
+  position: absolute
+  height: 60%
+  width: 100px
+  top: 25%
+  left: 0
+  pointer-events: none
+  opacity: 0.5
+
+/* active state */
+input:focus ~ .highlight, textarea:focus ~ .highlight
+  animation: inputHighlighter 0.3s ease
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter
+  from
+    background: #009fe3
+  to
+    width: 0
+    background: transparent
+
+.mfp-close-btn-in .mfp-close
+  position: absolute
+  top: 5px
+  right: 20px
+  margin: 0
+  padding: 0
+  width: auto
+  height: 33px
+  font-family: $default-font
+  font-size: em(14px)
+  color: #e71173
+  opacity: 1
+  background: linear-gradient(to right, #282828, #282828 50%, transparent 50%)
+  background-position: 0 100%
+  background-repeat: repeat-x
+  background-size: 3px 1px
+  +media-breakpoint-down(sm)
+    font-size: em(16px)
+
+.mfp-close:hover
+  opacity: 0.7
+
+.success-popup,
+.fail-popup
+  max-width: 540px
+  height: 100%
+  background-color: #ffffff
+
+.success-popup__content,
+.fail-popup__content
+  margin-bottom: em(20px)
+  text-align: center
+
+.success-popup__icon
+  margin: 0 auto em(20px)
+
+.fail-popup__icon
+  margin: 0 auto em(20px)
+
+.success-popup__title
+  text-transform: uppercase
+  color: #009740
+
+.fail-popup__title
+  text-transform: uppercase
+  color: #e30413
+
+.success-popup__button.mfp-close,
+.fail-popup__button.mfp-close
+  position: relative
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  overflow: hidden
+  width: 100%
+  height: 3.4375em
+  margin-right: 1.875em
+  color: #ffffff
+  background: linear-gradient(to right, #2c2f84 0%, #4d53eb 100%)
+  border: none
+  border-radius: 10px
+  cursor: pointer
+  transition: 0.4s ease
+  user-select: none
+  &:hover
+    opacity: 1
+
+// ------- Magnific-Popup CLOSED -------
+
+// ------------------------------
+// MEDIA QUERIES
+// ------------------------------
+@media (max-width: 380px)
+  .main-offer
+    h1
+      font-size: 3.25em
+
+  .main-header__tel-wrap
+    .fa-mobile-alt
+      font-size: 1em
+    a
+      font-size: 1.25em
+      font-weight: bold
+
+@import "media" // Always at the end
+
