@@ -9,7 +9,7 @@ var syntax          = 'sass', // Установите значение «sass» 
     useGM           = false, // Включить/Выключить использование GraphicsMagick для обработки изображений (необходимо установить библиотеку GraphicsMagick).
     srcFolder       = 'src',
     distFolder      = 'dist',
-    localHostFolder = 'C:/OSPanel/domains/domain.local'; // Директория локального сервера
+    localHostFolder = 'C:/OSPanel/domains/design-print.spb.local'; // Директория локального сервера
 
 
 var gulp          = require('gulp'),
