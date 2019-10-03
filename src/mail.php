@@ -1,77 +1,65 @@
 <?php
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-$method = $_SERVER['REQUEST_METHOD'];
+// Load Composer's autoloader
+require 'vendor/autoload.php';
+require 'mail-content.php';
 
-$sitename = "designprint.local";
-$from = "mikbrazh@yandex.ru";
-$to = "mikbrazh@gmail.com";
-// $to = "e.brazhnik2017@gmail.com";
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-$color = false; // Переключает чередование цветов ячеек таблицы
+try {
+    //Server settings
+    $mail->CharSet = 'utf-8';
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'mikkorab@gmail.com';                     // SMTP username
+    $mail->Password   = '*';                               // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail->Port       = 587;                                    // TCP port to connect to
 
-$formId = isset( $_POST['form_id'] ) ? $_POST['form_id'] : 1; // Получаем значение form_id
+    //Recipients
+    $mail->setFrom('mikkorab@gmail.com', 'Михаил Кораблик');
+    $mail->addAddress('mikkorab@gmail.com', 'Михаил Кораблик');     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    $mail->addReplyTo('mikkorab@gmail.com', 'Михаил Кораблик');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
 
-if ( $formId == 2) { // Формируем письмо из формы с form_id == 2
+    // Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-  $subject= "СРОЧНО! Перезвоните клиенту с сайта \"$sitename\"";
-  $name  = trim($_POST["user_name"]);
-  $phonenumber  = trim($_POST["user_phonenumber"]);
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject; // Получаем из mail-content.php
+    $mail->Body    = $content; // Получаем из mail-content.php
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-      <td style='padding: 10px; border: #e9e9e9 1px solid; width: 15%'><b>Имя:</b></td>
-      <td style='padding: 10px; border: #e9e9e9 1px solid;'>$name</td>
-    </tr>";
+    $mail->send();
 
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-    <td style='padding: 10px; border: #e9e9e9 1px solid; width: 15%'><b>Телефон:</b></td>
-    <td style='padding: 10px; border: #e9e9e9 1px solid;'>$phonenumber</td>
-  </tr>";
+    // Определяем результат выполнения
+    $result = array(
+        'status' => 'success'
+    );
+    // Переводим массив в JSON
+    echo json_encode($result);
 
-  $table = "<table style='width: 100%;'>$table</table>";
+    // echo 'Message has been sent';
+} catch (Exception $e) {
 
+    // Определяем результат выполнения
+    $result = array(
+        'status' => 'error'
+    );
+    // Переводим массив в JSON
+    echo json_encode($result);
+
+    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-else { // Формируем письмо из формы с form_id != 2
-
-  $subject= "СРОЧНО! Сообщение с сайта \"$sitename\"";
-  $name  = trim($_POST["user_name"]);
-  $phonenumber  = trim($_POST["user_phonenumber"]);
-  $email = trim($_POST["user_email"]);
-  $message = trim($_POST["user_message"]);
-
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-    <td style='padding: 10px; border: #e9e9e9 1px solid; width: 10%'><b>Имя:</b></td>
-    <td style='padding: 10px; border: #e9e9e9 1px solid;'>$name</td>
-  </tr>";
-
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-    <td style='padding: 10px; border: #e9e9e9 1px solid; width: 10%'><b>Телефон:</b></td>
-    <td style='padding: 10px; border: #e9e9e9 1px solid;'>$phonenumber</td>
-  </tr>";
-
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-    <td style='padding: 10px; border: #e9e9e9 1px solid; width: 10%'><b>Эл. почта:</b></td>
-    <td style='padding: 10px; border: #e9e9e9 1px solid;'>$email</td>
-  </tr>";
-
-  $table .= "" . ( ($color = !$color) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-    <td style='padding: 10px; border: #e9e9e9 1px solid;vertical-align: top; width: 10%'><b>Сообщение:</b></td>
-    <td style='padding: 10px; border: #e9e9e9 1px solid;'>$message</td>
-  </tr>";
-
-  $table = "<table style='width: 100%;'>$table</table>";
-
-}
-
-// Кодируем текст в base64, чтобы небыло кракозябры
-function adopt($text) {
-  return '=?UTF-8?B?'.base64_encode($text).'?=';
-}
-
-// Формируем заголовки письма
-$headers = "MIME-Version: 1.0" . PHP_EOL .
-"Content-Type: text/html; charset=utf-8" . PHP_EOL .
-"From: '.adopt($name).' <'.$from.'>" . PHP_EOL .
-"Reply-To: '.$from.'" . PHP_EOL;
-
-// Отправляем письмо
-mail($to, adopt($subject), $table, $headers );

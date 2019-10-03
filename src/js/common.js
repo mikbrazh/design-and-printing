@@ -331,9 +331,15 @@ var sendAjax = function(event) {
       data: data
     })
     .done(function() {
-      console.log("success");
-      openSuccessPopup();
-      resetForm();
+      var data = JSON.parse(response);
+      if (data.status === 'success') {
+          console.log('success');
+          openSuccessPopup();
+          resetForm();
+      } else {
+        console.log('error');
+        openFailPopup();
+      }
     })
     .fail(function() {
       console.log("error");
